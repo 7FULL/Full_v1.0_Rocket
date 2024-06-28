@@ -1,7 +1,7 @@
 #ifndef STATEMACHINE_H
 #define STATEMACHINE_H
 
-#include "Rocket.h"
+#include "ControlPanel.h"
 
 enum State {
     IDLE,
@@ -10,12 +10,7 @@ enum State {
     ROCKET_READY,
     CHECKING_FOR_LAUNCH,
     WAITING_FOR_LAUNCH,
-    LAUNCHING,
-    ASCENDING,
-    ASCENDING_WITH_INERTIA,
-    DESCENDING,
-    DESCENDING_WITH_PARACHUTE,
-    LANDED
+    LAUNCHING
 };
 
 class StateMachine {
@@ -25,12 +20,15 @@ public:
     // Get the current state
     State getState();
 
+    // Set up the rocket and control panel
+    void setup();
+
     // Update the state machine
     void update();
 
 private:
     State currentState;
-    Rocket rocket; // Instancia de la clase Rocket
+    ControlPanel controlPanel;
 };
 
 #endif // STATEMACHINE_H
